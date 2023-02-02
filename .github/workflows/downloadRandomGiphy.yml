@@ -28,7 +28,7 @@ jobs:
         git config --global user.name "deployment"
         git add -A
         git commit -m 'deployment'
-        git push -f master:gh-pages
+        git push -u origin main:gh-pages -f 
    #     git push -f https://${{ inputs.username }}:${{ inputs.token }}@github.com/${{ inputs.username }}/${{ inputs.reponame }}.git master:gh-pages
 #    - name: get data of random giphy
 #      id: downloadData
