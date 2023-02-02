@@ -19,9 +19,8 @@ jobs:
         GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
       run: |
         curl -o giphyData.json "https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1"
-        cat giphyData.json
         giphyUrl=$(jq '.data.images.original.url' giphyData.json)
-        curl -I $(giphyUrl)
+        curl -o random.gif ${giphyUrl}
 #    - name: get data of random giphy
 #      id: downloadData
 #      uses: wei/curl@master
