@@ -43,4 +43,9 @@ jobs:
         git init
         git add -A
         git commit -m 'deployment'
-        git push -f https://YoshiMan:${{ secrets.GITHUB_TOKEN }}@github.com/YoshiMan/random-giphy-every-day.git master:gh-pages
+        #git push -f https://YoshiMan:${{ secrets.GITHUB_TOKEN }}@github.com/YoshiMan/random-giphy-every-day.git master:gh-pages
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
