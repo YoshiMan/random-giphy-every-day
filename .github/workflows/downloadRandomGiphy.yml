@@ -19,8 +19,8 @@ jobs:
       env:
         GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
       run: |
-        mkdir dist
-        cd dist
+        #mkdir dist
+        #cd dist
  
         curl -o giphyData.json "https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1"
         giphyUrl=$(jq '.data.images.original.url' giphyData.json | sed "s/\"//g")
@@ -48,4 +48,4 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh-pages
+        branch: ${{ github.ref }}
