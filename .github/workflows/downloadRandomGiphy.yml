@@ -13,14 +13,6 @@ jobs:
   curl:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - run: |
-          date > generated.txt
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "generated"
-          git push
     - uses: actions/checkout@v3.0.2
     - shell: bash
       name: curl from ubuntu
@@ -29,7 +21,6 @@ jobs:
       run: |
         curl -o giphyData.json "https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1"
         giphyUrl=$(jq '.data.images.original.url' giphyData.json | sed "s/\"//g")
-        echo ${giphyUrl}
         curl -o random.gif ${giphyUrl}
         #git config --global user.email "deployment@example.com"
         #git config --global user.name "deployment"
@@ -41,8 +32,7 @@ jobs:
         git config --global user.email 'your-username@users.noreply.github.com'
         git add -A
         git commit -m "deployment"
-        git checkout -b gh-pages
-        git push
+        git push origin main:gh-pages
 
 #    - name: get data of random giphy
 #      id: downloadData
