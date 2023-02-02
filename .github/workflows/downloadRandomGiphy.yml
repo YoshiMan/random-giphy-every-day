@@ -18,6 +18,7 @@ jobs:
       env:
         GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
       run: |
+        curl https://httpbin.org/get?api_key=${GIPHY_API_KEY}
         curl -o giphyData.json 'https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1'
         cat giphyData.json
         giphyUrl=$(jq '.data.images.original.url' giphyData.json)
