@@ -13,18 +13,21 @@ jobs:
   curl:
     runs-on: ubuntu-latest
     steps:
-    - name: get data of random giphy
-      id: downloadData
-      uses: wei/curl@master
-      env:
-        GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
-      with:
-        args: "https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1"
-    - name: get random giphy url
-      id: giphyUrl
-      uses: sergeysova/jq-action@v2
-      with:
-        cmd: 'echo ${{ steps.download.outputs.value }}'
+    - name: curl from ubuntu
+      run: |
+       curl -I $(curl 'https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1'  | jq.data.images.original.url)
+#    - name: get data of random giphy
+#      id: downloadData
+#      uses: wei/curl@master
+#      env:
+#        GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
+#      with:
+#        args: "https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1"
+#    - name: get random giphy url
+#      id: giphyUrl
+#      uses: sergeysova/jq-action@v2
+#      with:
+#        cmd: 'echo ${{ steps.download.outputs.value }}'
         
         
         
