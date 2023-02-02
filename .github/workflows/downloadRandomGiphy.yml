@@ -14,8 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: curl from ubuntu
+      env:
+        GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
       run: |
-        giphyUrl=$(curl 'https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1'  | jq .data.images.original.url)
+        giphyData = $(curl 'https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1')
+        giphyUrl = $(jq .data.images.original.url --arg giphyData "$giphyData" '$giphyData')
         curl -I $(giphyUrl)
 #    - name: get data of random giphy
 #      id: downloadData
