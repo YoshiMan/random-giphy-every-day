@@ -15,7 +15,8 @@ jobs:
     steps:
     - name: curl from ubuntu
       run: |
-       curl -I $(curl 'https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1'  | jq.data.images.original.url)
+        giphyUrl=$(curl 'https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1'  | jq.data.images.original.url)
+        curl -I $(giphyUrl)
 #    - name: get data of random giphy
 #      id: downloadData
 #      uses: wei/curl@master
