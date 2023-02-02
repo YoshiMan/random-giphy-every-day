@@ -31,7 +31,8 @@ jobs:
         #git push -f https://YoshiMan:${{ secrets.GITHUB_TOKEN }}@github.com/YoshiMan/random-giphy-every-day.git main:gh-pages
         git config --global user.name 'Your Name'
         git config --global user.email 'your-username@users.noreply.github.com'
-        git commit -am "deployment"
+        git add -A
+        git commit -m "deployment"
         git push
 
 #    - name: get data of random giphy
