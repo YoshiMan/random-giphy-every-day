@@ -20,7 +20,7 @@ jobs:
         GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
       run: |
         curl -o giphyData.json "https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1"
-        giphyUrl=$(jq '.data.images.original.url' giphyData.json)
+        giphyUrl=$(jq '.data.images.original.url' giphyData.json | sed "s/\"//g")
         echo ${giphyUrl}
         curl -o random.gif ${giphyUrl}
         git status
