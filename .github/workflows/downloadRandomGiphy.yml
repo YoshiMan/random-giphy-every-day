@@ -13,6 +13,14 @@ jobs:
   curl:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
+    - run: |
+          date > generated.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push
     - uses: actions/checkout@v3.0.2
     - shell: bash
       name: curl from ubuntu
@@ -33,6 +41,7 @@ jobs:
         git config --global user.email 'your-username@users.noreply.github.com'
         git add -A
         git commit -m "deployment"
+        git checkout -b gh-pages
         git push
 
 #    - name: get data of random giphy
