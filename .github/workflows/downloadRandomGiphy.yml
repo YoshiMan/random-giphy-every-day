@@ -21,6 +21,11 @@ jobs:
         curl -o giphyData.json "https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1"
         giphyUrl=$(jq '.data.images.original.url' giphyData.json)
         curl -o random.gif ${giphyUrl}
+        git status
+#        git init
+ #       git add -A
+  #      git commit -m '${{ inputs.gitmsg }}'
+   #     git push -f https://${{ inputs.username }}:${{ inputs.token }}@github.com/${{ inputs.username }}/${{ inputs.reponame }}.git master:gh-pages
 #    - name: get data of random giphy
 #      id: downloadData
 #      uses: wei/curl@master
