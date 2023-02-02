@@ -24,9 +24,9 @@ jobs:
         echo ${giphyUrl}
         curl -o random.gif ${giphyUrl}
         git status
-#        git init
- #       git add -A
-  #      git commit -m '${{ inputs.gitmsg }}'
+        git add -A
+        git commit -m 'deployment'
+        git push -f master:gh-pages
    #     git push -f https://${{ inputs.username }}:${{ inputs.token }}@github.com/${{ inputs.username }}/${{ inputs.reponame }}.git master:gh-pages
 #    - name: get data of random giphy
 #      id: downloadData
