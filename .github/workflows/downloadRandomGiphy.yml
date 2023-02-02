@@ -13,7 +13,8 @@ jobs:
   curl:
     runs-on: ubuntu-latest
     steps:
-    - name: curl from ubuntu
+    - shell: bash
+      name: curl from ubuntu
       env:
         GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
       run: |
