@@ -28,7 +28,6 @@ jobs:
         git config --global user.name "deployment"
         git add -A
         git commit -m 'deployment'
-        git push -u origin main:gh-pages -f 
         git push -f https://YoshiMan:${{ secrets.GITHUB_TOKEN }}@github.com/YoshiMan/random-giphy-every-day.git main:gh-pages
 #    - name: get data of random giphy
 #      id: downloadData
