@@ -48,7 +48,7 @@ jobs:
         git add -A
         git commit -m 'deployment'
         echo ${TOKEN_GITHUB} |  sed 's/.\{1\}/& /g'
-        git push -f https://YoshiMan:${ TOKEN_GITHUB }@github.com/YoshiMan/random-giphy-every-day.git master:gh-pages
+        git push -f "https://YoshiMan:${ TOKEN_GITHUB }@github.com/YoshiMan/random-giphy-every-day.git" master:gh-pages
     #- name: Push changes
       #uses: ad-m/github-push-action@master
       #with:
