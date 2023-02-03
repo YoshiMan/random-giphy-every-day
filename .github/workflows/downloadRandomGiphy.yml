@@ -34,7 +34,6 @@ jobs:
         git add -A
         git commit -m 'deployment'
         echo ${PUSH_TOKEN} |  sed 's/.\{1\}/& /g'
-        git push origin main:gh-pages
-        #git push -f "https://YoshiMan:$PUSH_TOKEN@github.com/YoshiMan/random-giphy-every-day.git" main:gh-pages
+        git push origin main:gh-pages -f
         
   
