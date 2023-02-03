@@ -16,8 +16,6 @@ jobs:
     - uses: actions/checkout@v3.0.2
       with:
         token: ${{ secrets.PUSH_TOKEN }}
-        ref: ${{ github.head_ref }}
-        fetch-depth: 0
     - shell: bash
       name: curl from ubuntu
       env:
@@ -28,12 +26,8 @@ jobs:
         giphyUrl=$(jq '.data.images.original.url' giphyData.json | sed "s/\"//g")
         curl -o random.gif ${giphyUrl}
         
-        git config --global user.email "Your Name"
-        git config --global user.name "your-username@users.noreply.github."
-        git init
         git add -A
         git commit -m 'deployment'
-        echo ${PUSH_TOKEN} |  sed 's/.\{1\}/& /g'
         git push origin main:gh-pages -f
         
   
