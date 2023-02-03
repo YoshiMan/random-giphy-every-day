@@ -9,28 +9,26 @@ on:
   workflow_dispatch:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-
-  curl:
+  provide_random_gif:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3.0.2
       with:
         token: ${{ secrets.PUSH_TOKEN }}
     - shell: bash
-      name: curl from ubuntu
+      name: download image
       env:
         GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
-        PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
       run: | 
-        #curl -o giphyData.json "https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&limit=1"
         curl -o giphyData.json "https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&tag=fail&limit=1"
         giphyUrl=$(jq '.data.images.original.url' giphyData.json | sed "s/\"//g")
         curl -o random.gif ${giphyUrl}
-        
+    - shell: bash
+      name: push image to git
+      run: | 
         git config --global user.email "you@example.com"
         git config --global user.name "Your Name"
         git add -A
         git commit -m 'deployment'
-        git push origin main:gh-pages -f
-        
+        git push origin main:gh-pages -f        
   
