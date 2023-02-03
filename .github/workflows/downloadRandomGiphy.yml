@@ -21,7 +21,7 @@ jobs:
       name: curl from ubuntu
       env:
         GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
-        TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }
+        TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
       run: |
         #mkdir dist
         #cd dist
