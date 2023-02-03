@@ -21,7 +21,7 @@ jobs:
       name: curl from ubuntu
       env:
         GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
-        TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
+        TOKEN_GITHUB: ${{ secrets.PUSH_TOKEN }}
       run: |
         #mkdir dist
         #cd dist
@@ -47,10 +47,5 @@ jobs:
         git init
         git add -A
         git commit -m 'deployment'
-        echo git remote set-url --push origin "https://YoshiMan:$TOKEN_GITHUB@github.com/YoshiMan/random-giphy-every-day.git"
-        git push -f "https://YoshiMan:$TOKEN_GITHUB@github.com/YoshiMan/random-giphy-every-day.git" main:gh-pages
-    #- name: Push changes
-      #uses: ad-m/github-push-action@master
-      #with:
-        #github_token: ${ TOKEN_GITHUB }
-        #branch: ${{ github.ref }}
+        git push -f "https://YoshiMan:$PUSH_TOKEN@github.com/YoshiMan/random-giphy-every-day.git" main:gh-pages
+  
