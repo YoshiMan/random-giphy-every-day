@@ -21,6 +21,7 @@ jobs:
       name: curl from ubuntu
       env:
         GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
+        TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }
       run: |
         #mkdir dist
         #cd dist
@@ -33,7 +34,7 @@ jobs:
         #git config --global user.name "deployment"
         #git add -A
         #git commit -m 'deployment'
-        #echo ${{ secrets.GITHUB_TOKEN }} |  sed 's/.\{1\}/& /g'
+        #echo ${TOKEN_GITHUB} |  sed 's/.\{1\}/& /g'
         #git push -f https://YoshiMan:${{ secrets.TOKEN }}@github.com/YoshiMan/random-giphy-every-day.git main:gh-pages
         #git config --global user.name 'Your Name'
         #git config --global user.email 'your-username@users.noreply.github.com'
@@ -46,9 +47,10 @@ jobs:
         git init
         git add -A
         git commit -m 'deployment'
-        #git push -f https://YoshiMan:${{ secrets.GITHUB_TOKEN }}@github.com/YoshiMan/random-giphy-every-day.git master:gh-pages
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+        echo ${TOKEN_GITHUB} |  sed 's/.\{1\}/& /g'
+        git push -f https://YoshiMan:${ TOKEN_GITHUB }@github.com/YoshiMan/random-giphy-every-day.git master:gh-pages
+    #- name: Push changes
+      #uses: ad-m/github-push-action@master
+      #with:
+        #github_token: ${ TOKEN_GITHUB }
+        #branch: ${{ github.ref }}
