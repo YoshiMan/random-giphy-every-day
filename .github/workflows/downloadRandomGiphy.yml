@@ -24,7 +24,7 @@ jobs:
         giphyUrl=$(jq '.data.images.original.url' giphyData.json | sed "s/\"//g")
         curl -o random.gif ${giphyUrl}
     - shell: bash
-      name: download image
+      name: download bucketlist
       env:
         API_NINJAS_API_KEY: ${{ secrets.API_NINJAS_API_KEY }}
       run: | 
