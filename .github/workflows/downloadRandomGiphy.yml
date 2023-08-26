@@ -24,7 +24,13 @@ jobs:
         giphyUrl=$(jq '.data.images.original.url' giphyData.json | sed "s/\"//g")
         curl -o random.gif ${giphyUrl}
     - shell: bash
-      name: push image to git
+      name: download image
+      env:
+        API_NINJAS_API_KEY: ${{ secrets.API_NINJAS_API_KEY }}
+      run: | 
+        echo -en "<h1 style="text-align: center">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/bucketlist' | jq -r '.item')</h1>" > bucketlist.html
+    - shell: bash
+      name: push everything to git
       run: | 
         git config --global user.email "you@example.com"
         git config --global user.name "Your Name"
