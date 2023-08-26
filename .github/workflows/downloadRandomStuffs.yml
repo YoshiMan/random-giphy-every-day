@@ -28,14 +28,14 @@ jobs:
       env:
         API_NINJAS_API_KEY: ${{ secrets.API_NINJAS_API_KEY }}
       run: | 
-        echo -en "<h1 style=\"text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/bucketlist' | jq -r '.item')</h1>" > bucketlist.html
-        echo -en "<h1 style=\"text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/chucknorris' | jq -r '.joke')</h1>" > chucknorris.html
-        echo -en "<h1 style=\"text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/dadjokes' | jq -r '.[0].joke')</h1>" > dadjokes.html
-        echo -en "<h1 style=\"text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/facts' | jq -r '.[0].fact')</h1>" > facts.html
-        echo -en "<h1 style=\"text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/jokes' | jq -r '.[0].joke')</h1>" > jokes.html
-        echo -en "<h1 style=\"text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/riddles' | jq -r '.[0] | .question, .answer')</h1>" > riddles.html
-        echo -en "<h1 style=\"text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/passwordgenerator?length=64' | jq -r '.random_password')</h1>" > passwordgenerator.html
-        echo -en "<h1 style=\"text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/babynames?gender=neutral' | jq -r '.[0]')</h1>" > babynames.html
+        echo -en "<h1 style=\"text-align: center\">$(curl -s -H "X-Api-Key: ${API_NINJAS_API_KEY}" 'https://api.api-ninjas.com/v1/bucketlist' | jq -r '.item')</h1>" > bucketlist.html
+        echo -en "<h1 style=\"text-align: center\">$(curl -s -H "X-Api-Key: ${API_NINJAS_API_KEY}" 'https://api.api-ninjas.com/v1/chucknorris' | jq -r '.joke')</h1>" > chucknorris.html
+        echo -en "<h1 style=\"text-align: center\">$(curl -s -H "X-Api-Key: ${API_NINJAS_API_KEY}" 'https://api.api-ninjas.com/v1/dadjokes' | jq -r '.[0].joke')</h1>" > dadjokes.html
+        echo -en "<h1 style=\"text-align: center\">$(curl -s -H "X-Api-Key: ${API_NINJAS_API_KEY}" 'https://api.api-ninjas.com/v1/facts' | jq -r '.[0].fact')</h1>" > facts.html
+        echo -en "<h1 style=\"text-align: center\">$(curl -s -H "X-Api-Key: ${API_NINJAS_API_KEY}" 'https://api.api-ninjas.com/v1/jokes' | jq -r '.[0].joke')</h1>" > jokes.html
+        echo -en "<h1 style=\"text-align: center\">$(curl -s -H "X-Api-Key: ${API_NINJAS_API_KEY}" 'https://api.api-ninjas.com/v1/riddles' | jq -r '.[0] | .question, .answer')</h1>" > riddles.html
+        echo -en "<h1 style=\"text-align: center\">$(curl -s -H "X-Api-Key: ${API_NINJAS_API_KEY}" 'https://api.api-ninjas.com/v1/passwordgenerator?length=64' | jq -r '.random_password')</h1>" > passwordgenerator.html
+        echo -en "<h1 style=\"text-align: center\">$(curl -s -H "X-Api-Key: ${API_NINJAS_API_KEY}" 'https://api.api-ninjas.com/v1/babynames?gender=neutral' | jq -r '.[0]')</h1>" > babynames.html
 
 
 
