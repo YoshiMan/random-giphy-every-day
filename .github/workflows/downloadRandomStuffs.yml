@@ -28,7 +28,7 @@ jobs:
       env:
         API_NINJAS_API_KEY: ${{ secrets.API_NINJAS_API_KEY }}
       run: | 
-        echo -en "<h1 style="text-align: center">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/bucketlist' | jq -r '.item')</h1>" > bucketlist.html
+        echo -en "<h1 style="text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/bucketlist' | jq -r '.item')</h1>" > bucketlist.html
     - shell: bash
       name: push everything to git
       run: | 
