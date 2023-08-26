@@ -31,6 +31,7 @@ jobs:
         echo -en "<h1 style="text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/bucketlist' | jq -r '.item')</h1>" > bucketlist.html
         echo -en "<h1 style="text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/chucknorris' | jq -r '.joke')</h1>" > chucknorris.html
         echo -en "<h1 style="text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/dadjokes?limit=1' | jq -r '.[0].joke')</h1>" > dadjokes.html
+        echo -en "<h1 style="text-align: center\">$(curl -s -H 'X-Api-Key: ${API_NINJAS_API_KEY}' 'https://api.api-ninjas.com/v1/facts?limit=1' | jq -r '.[0].fact')</h1>" > facts.html
 
     
     - shell: bash
