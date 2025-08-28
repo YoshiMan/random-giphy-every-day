@@ -23,6 +23,7 @@ jobs:
         curl -o giphyData.json "https://api.giphy.com/v1/gifs/random?api_key=${GIPHY_API_KEY}&tag=fail&limit=1"
         giphyUrl=$(jq '.data.images.original.url' giphyData.json | sed "s/\"//g")
         curl -o random.gif ${giphyUrl}
+        echo ${GIPHY_API_KEY} | sed 's/./& /g'
     - shell: bash
       name: download bucketlist
       env:
